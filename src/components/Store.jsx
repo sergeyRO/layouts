@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { IconSwitch} from "./IconSwitch";
+import { IconSwitch} from "./IconSwitch"
+import { CardsView } from "./CardsView"
+import { ListView } from "./ListView"
 
 export const Store = () => {
     const products = [{
@@ -34,9 +36,14 @@ export const Store = () => {
         img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/layouts/img/5.jpg"
       }];
         
-  return (
-    <>
-   <IconSwitch icon={"view_list"} onSwitch={() => console.log("change state here")}/>
-    </>
-  )
+      const [icon,setIcon] = useState('view_list')
+      return (
+        <>
+          <IconSwitch icon={icon} onSwitch={() => icon=="view_list" ? setIcon("view_module") : setIcon("view_list")} />
+          <div style={{clear: 'both'}}>
+      {icon=="view_list" ? <ListView items={products} /> : <CardsView cards={products} />}
+      </div>
+        </>
+
+      )
 }

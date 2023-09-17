@@ -1,14 +1,10 @@
-import { useState } from "react";
-<style>
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons')
-</style>
-export const IconSwitch = (icon,onSwitch) => {
-        
+export const IconSwitch = ({icon, onSwitch}) => {
+        // view_list      view_module  
   return (
     <>
-        <span className="material-icons">
-list
-</span>
+      <div style={{float: 'right'}}>
+        <span className="material-icons" onClick={onSwitch}>{icon}</span>
+      </div>
     </>
   )
 }
